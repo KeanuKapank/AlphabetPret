@@ -1,0 +1,91 @@
+# =========================================================================
+# .NET Aspire Specifics
+# =========================================================================
+# Ignore local Aspire tool configurations and dashboard states
+.aspire/
+
+# =========================================================================
+# .NET / Visual Studio (Core rules)
+# =========================================================================
+# Build artifacts
+bin/
+obj/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Roslyn cache directories
+.vs/
+.idea/
+.vscode/
+
+# =========================================================================
+# Configuration Secrets & Local Settings
+# =========================================================================
+# Never commit your local secrets or environment overrides
+appsettings.Development.json
+appsettings.local.json
+.env
+.env.*
+!.env.example
+
+# =========================================================================
+# Containers & Docker (If using containerized resources locally)
+# =========================================================================
+.dockerignore
+# If your AppHost spins up persistent local volumes
+.db-data/
+.postgres-data/
+
+# =========================================================================
+# Operating System Files
+# =========================================================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules
+/dist
+/dist-ssr
+*.local
+
+# Environment variables (Crucial for security)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS metadata
+.DS_Store
+Thumbs.db

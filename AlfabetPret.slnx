@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="AlfabetPret.API/AlfabetPret.API.csproj" Id="2eed9c7c-96cd-4f78-b278-6587ca337c10" />
+  <Project Path="AlfabetPret.AppHost/AlfabetPret.AppHost.csproj" />
+  <Project Path="AlfabetPret.Application/AlfabetPret.Application.csproj" Id="355a7099-7322-4849-a00c-81a872d48f85" />
+  <Project Path="AlfabetPret.Core/AlfabetPret.Core.csproj" Id="e9fd3db4-ab58-4f62-ba13-fd26de08c0f4" />
+  <Project Path="AlfabetPret.Infrastructure/AlfabetPret.Infrastructure.csproj" Id="33a256cf-bc32-4c32-9956-5883007d9d79" />
+  <Project Path="AlfabetPret.ServiceDefaults/AlfabetPret.ServiceDefaults.csproj" />
+</Solution>
