@@ -23,11 +23,14 @@ var dbPassword = builder.AddParameter("postgres-password", "pretpassword", secre
 // PostgreSQL with a persistent data volume.
 // ---------------------------------------------------------------------------
 
-var postgres = builder
+var postgress = builder
     .AddPostgres(
         "postgres",
         userName: dbUser,
         password: dbPassword)
+    .WithEnvironment(
+        "POSTGRES_DB",
+        "AlfabetPretDb")
     .WithDataVolume("alfabetpret-pgdata")
     .WithBindMount(
         Path.Combine(
@@ -39,11 +42,10 @@ var postgres = builder
     {
         service.Name = "postgres";
         service.Restart = "unless-stopped";
-    });
+    })
+    .WithPgAdmin();
 
-var db = postgres.AddDatabase(
-    "AlfabetPretDb",
-    databaseName: "AlfabetPretDb");
+var db = postgress.AddDatabase("AlfabetPretDb");
 
 var apiService = builder.AddProject<Projects.AlfabetPret_API>("api")
     .WithReference(cache)
@@ -65,8 +67,8 @@ var strapi = builder
     .WithEnvironment("PORT", "1337")
     .WithEnvironment("NODE_ENV", "production")
     .WithEnvironment("DATABASE_CLIENT", "postgres")
-    .WithEnvironment("DATABASE_HOST", postgres.Resource.PrimaryEndpoint.Property(EndpointProperty.Host))
-    .WithEnvironment("DATABASE_PORT", postgres.Resource.PrimaryEndpoint.Property(EndpointProperty.TargetPort))
+    .WithEnvironment("DATABASE_HOST", postgress.Resource.PrimaryEndpoint.Property(EndpointProperty.Host))
+    .WithEnvironment("DATABASE_PORT", postgress.Resource.PrimaryEndpoint.Property(EndpointProperty.TargetPort))
     .WithEnvironment("DATABASE_NAME", "AlfabetPretDb")
     .WithEnvironment("DATABASE_USERNAME", dbUser)
     .WithEnvironment("DATABASE_PASSWORD", dbPassword)
